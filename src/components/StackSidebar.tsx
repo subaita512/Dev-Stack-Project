@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from "react";
+
 type Technology = {
   id: string;
   name: string;
@@ -7,11 +9,26 @@ type Technology = {
 
 type StackSidebarProps = {
   stack: Technology[];
+  setStack: Dispatch<SetStateAction<Technology[]>>;
 };
 
-function StackSidebar({ stack }: StackSidebarProps) {
+function StackSidebar({
+  stack,
+  setStack,
+}: StackSidebarProps) {
+  
+  const handleRemove = (id: string) => {
+    setStack((previousStack) =>
+      previousStack.filter((item) => item.id !== id)
+    );
+  };
+
+  const handleRemoveAll = () => {
+    setStack([]);
+  };
+
   return (
-    <div className="border rounded-xl p-5 bg-white">
+    <div className="border border-gray-200 rounded-xl p-5 bg-white">
       <h2 className="font-bold text-xl">
         Your Stack
       </h2>
@@ -29,15 +46,15 @@ function StackSidebar({ stack }: StackSidebarProps) {
           stack.map((item) => (
             <div
               key={item.id}
-              className="border rounded-lg p-3 mb-3 flex items-center gap-3"
+              className="border border-gray-200 rounded-lg p-3 mb-3 flex items-center gap-3"
             >
               <img
                 src={item.icon}
                 alt={item.name}
-                className="w-8 h-8"
+                className="w-8 h-8 object-contain"
               />
 
-              <div>
+              <div className="flex-1">
                 <h3 className="font-medium">
                   {item.name}
                 </h3>
@@ -46,12 +63,23 @@ function StackSidebar({ stack }: StackSidebarProps) {
                   {item.category}
                 </p>
               </div>
+
+              <button
+                onClick={() => handleRemove(item.id)}
+                className="text-gray-400 hover:text-red-500 text-lg"
+              >
+                ✕
+              </button>
             </div>
           ))
         )}
       </div>
 
-      <button className="w-full border border-red-300 text-red-500 py-2 rounded-lg mt-4">
+      <button
+        onClick={handleRemoveAll}
+        disabled={stack.length === 0}
+        className="w-full border border-red-300 text-red-500 py-2 rounded-lg mt-4 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
         Remove All
       </button>
     </div>
