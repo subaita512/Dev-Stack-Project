@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import TechnologySection from "./components/TechnologySection";
 import StackSidebar from "./components/StackSidebar";
+import Footer from "./components/Footer";
 
 type Technology = {
   id: string;
@@ -42,6 +43,7 @@ function App() {
 
         </div>
       </div>
+      <Footer />
     </>
   );
 }

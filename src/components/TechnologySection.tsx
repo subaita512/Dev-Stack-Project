@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import technologies from "../data/technologies.json";
 import TechnologyCard from "./TechnologyCard";
+fetch("/data/technologies.json")
 
 type Technology = {
   id: string;
