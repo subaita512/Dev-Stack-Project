@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 type Technology = {
     id: string;
     name: string;
@@ -25,13 +26,14 @@ function TechnologyCard({
     );
 
     const handleAddToStack = () => {
-        if (isAdded) {
-            alert("Technology already added!");
-            return;
-        }
+    if (isAdded) {
+        toast.warning("Technology already added!");
+        return;
+    }
 
-        setStack([...stack, technology]);
-    };
+    setStack([...stack, technology]);
+    toast.success(`${technology.name} added to stack!`);
+};
     return (
         <div className="border rounded-xl p-4 bg-white">
             <div className="flex justify-between items-center">

@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import type { Dispatch, SetStateAction } from "react";
 
 type Technology = {
@@ -18,14 +19,16 @@ function StackSidebar({
 }: StackSidebarProps) {
   
   const handleRemove = (id: string) => {
-    setStack((previousStack) =>
-      previousStack.filter((item) => item.id !== id)
-    );
-  };
+  setStack((previousStack) =>
+    previousStack.filter((item) => item.id !== id)
+  );
 
+  toast.info("Technology removed from your stack!");
+};
   const handleRemoveAll = () => {
-    setStack([]);
-  };
+  setStack([]);
+  toast.info("All technologies removed from your stack!");
+};
 
   return (
     <div className="border border-gray-200 rounded-xl p-5 bg-white">
