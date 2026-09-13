@@ -1,7 +1,6 @@
+import { useEffect, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
-import technologies from "../data/technologies.json";
 import TechnologyCard from "./TechnologyCard";
-fetch("/data/technologies.json")
 
 type Technology = {
   id: string;
@@ -23,6 +22,26 @@ function TechnologySection({
   stack,
   setStack,
 }: TechnologySectionProps) {
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data/technologies.json`)
+      .then((response) => response.json())
+      .then((data) => {
+        setTechnologies(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center py-20">
+        <p className="text-gray-500">Loading technologies...</p>
+      </div>
+    );
+  }
+
   return (
     <section>
       <h2 className="text-3xl font-bold mb-2">

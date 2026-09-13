@@ -7,13 +7,13 @@ function Footer() {
 
           <div>
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold">
+              <div className="w-9 h-9 rounded-lg theme-gradient flex items-center justify-center text-white font-bold">
                 DS
               </div>
 
               <h2 className="text-2xl font-bold">
                 <span className="text-black">Dev</span>
-                <span className="text-purple-600">Stack</span>
+                <span className="theme-gradient-text">Stack</span>
               </h2>
             </div>
 
