@@ -1,12 +1,14 @@
 import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
+import TechnologySection from "./components/TechnologySection";
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Navbar />
       <HeroSection />
-    </div>
+      <TechnologySection />
+    </>
   );
 }
 
