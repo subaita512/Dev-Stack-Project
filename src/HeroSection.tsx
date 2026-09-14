@@ -1,4 +1,4 @@
-import hero from "./assets/hero.png";
+import hero from "./assets/banner-stack.png";
 function HeroSection() {
     return (
         <section className="max-w-7xl mx-auto px-6 py-12 md:py-16">
@@ -32,7 +32,7 @@ function HeroSection() {
                     <img
                         src={hero}
                         alt="Development Stack"
-                        className="w-64 sm:w-72 lg:w-80 h-auto"
+                        className="w-72 sm:w-80 lg:w-96 h-auto"
                     />
                 </div>
             </div>
